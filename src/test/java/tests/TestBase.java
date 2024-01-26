@@ -15,7 +15,7 @@ public class TestBase {
     public void startDriver() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
         driver.get("https://goponsitedev.softlinktest.com/home");
 
 
