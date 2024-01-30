@@ -1,24 +1,35 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class PageBase {
+    public static WebDriver driver;
 
-    // Create constructor to use it in other pages
-
-    public PageBase(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public void setDriver(WebDriver driver) {
+        PageBase.driver = driver;
     }
 
-    protected static void clickButton(WebElement button) {
-        button.click();
+    protected WebElement find(By locator) {
+        return driver.findElement(locator);
     }
 
-    protected static void sendTextElement(WebElement text, String value) {
-        text.sendKeys(value);
+    protected void click(By locator) {
+        find(locator).click();
     }
 
+    protected void sendKeys(By locator, String text) {
+        WebElement element = find(locator);
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    protected String getText(By locator) {
+        String text = find(locator).getText();
+        System.out.println("Text: " + text);
+        return text;
+    }
 
 }

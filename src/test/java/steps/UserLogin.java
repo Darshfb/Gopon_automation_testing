@@ -3,37 +3,35 @@ package steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 
-
-import static tests.TestBase.driver;
-
 public class UserLogin {
-    HomePage homePage;
-
     // User Opens home page
+    HomePage homePage;
+    LoginPage loginPage;
+    SoftAssert softAssert = new SoftAssert();
     @Given("User opens home page")
     public void User_opens_home_page() {
-        homePage = new HomePage(driver);
+        homePage = new HomePage();
+        loginPage = new LoginPage();
+        homePage.openLoginPage();
 
     }
 
     @When("User fill email {string} and password {string} to can login")
     public void User_fill_email_and_password_to_can_login(String email, String password) {
-        homePage.openLoginPage();
-        System.out.println(email + password);
+        loginPage.userLogIn(email,password);
+        String expectedName = "Mostafa Tester";
+        String actualName = homePage.getUserName();
+        Assert.assertEquals(actualName, expectedName,"\n There is an error in user data \n");
     }
 
     @Then("User should navigate to home page")
     public void User_should_navigate_to_home_page() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        softAssert.assertEquals("actualName", "expectedName", "Hello");
+
     }
 }
