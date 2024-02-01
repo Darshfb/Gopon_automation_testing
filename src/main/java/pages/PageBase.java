@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public class PageBase {
     public static WebDriver driver;
@@ -30,6 +30,15 @@ public class PageBase {
         String text = find(locator).getText();
         System.out.println("Text: " + text);
         return text;
+    }
+
+    protected boolean isElementAppear(By locator){
+        try {
+            find(locator);
+            return true;
+        }catch (NoSuchElementException e){
+            return false;
+        }
     }
 
 }

@@ -8,6 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         features = {"src/test/java/features"},
         glue = {"steps"},
         plugin = {"pretty", "html:target/cucumber-html-report"},
+//        tags = "@unHappyScenario",
         dryRun = false,
         monochrome = true)
 public class TestRunner extends AbstractTestNGCucumberTests {
