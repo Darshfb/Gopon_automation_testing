@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/java/features"},
         glue = {"steps"},
-        plugin = {"pretty", "html:target/cucumber-html-report"},
+        plugin = {"pretty", "html:target/cucumber-html-report", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
 //        tags = "@unHappyScenario",
         dryRun = false,
         monochrome = true)
