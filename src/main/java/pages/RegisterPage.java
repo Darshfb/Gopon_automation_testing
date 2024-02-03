@@ -12,7 +12,7 @@ public class RegisterPage extends PageBase {
     private By passwordField = By.id("password-field");
     private By confirmPasswordField = By.xpath("//*[@id='password-field-2']");
     private By agreeCheckBox = By.id("agree");
-    private By registerBtn = By.xpath("//button[contains(@input,'submit')]");
+    private By registerBtn = By.xpath("//button[contains(@type,'submit')]");
 
     public void UserRegister(String firstName, String lastName, String email, String password, Integer phoneNumber) {
         sendKeys(firstNameField, firstName);
