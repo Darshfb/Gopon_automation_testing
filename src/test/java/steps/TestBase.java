@@ -2,6 +2,13 @@ package steps;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.qameta.allure.Description;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,6 +28,7 @@ public class TestBase {
 
     @Before
     public void startDriver() {
+        //npx allure-commandline serve -> Command to run allure report
         /*
         Chrome Headless ->
         ChromeOptions options = new ChromeOptions();
@@ -42,7 +50,18 @@ public class TestBase {
     }
 
     @After
-    public void stopDriver() {
+    public void stopDriver(Scenario scenario) {
+//            try {
+//                String screenShotName = scenario.getName().replaceAll(" ", "_");
+//                if(scenario.isFailed()){
+//                    scenario.log("This is failure");
+//                    TakesScreenshot ts = (TakesScreenshot) driver;
+//                    byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
+//                    scenario.attach(screenshot, "image/png", screenShotName);
+//                }
+//        }catch (Exception e){
+//                e.printStackTrace();
+//            }
         driver.quit();
     }
 }
