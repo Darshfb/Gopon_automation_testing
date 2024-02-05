@@ -23,12 +23,13 @@ public class UserLogin {
     public void User_opens_home_page() {
         homePage = new HomePage();
         loginPage = new LoginPage();
-        homePage.openLoginPage();
+
 
     }
 
     @When("User fill email {string} and password {string} to can login")
     public void User_fill_email_and_password_to_can_login(String email, String password) {
+        homePage.openLoginPage();
         loginPage.userLogIn(email, password);
 
     }
